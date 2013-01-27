@@ -12,6 +12,10 @@ public class StringReversal {
 	}
 	//In place replacement, space efficient, time inefficient
 	//favor this if effective use of memory is consideration
+	//On modern CPU architectures, the XOR technique is considerably slower than using
+	//a temporary variable to do swapping. One reason is that modern CPUs strive to execute instructions 
+	//in parallel via instruction pipelines.In the XOR technique, the inputs to each operation depend on 
+	//the results of the previous operation, so they must be executed in strictly sequential order.
 	static final String reverseUsingXOR(String string) {
 		byte[] array = string.getBytes();
 		for(int i = 0, j = array.length-1; i < array.length/2; i++, j--) {
@@ -33,7 +37,7 @@ public class StringReversal {
 		}
 		return new String(c);
 	}
-	//Inefficient - don't use it other than theorotical purpose
+	//Inefficient - don't use it other than theoretical purpose
 	static final String reverseUsingRecursion(String string) {
 		//base case to handle one char string and empty string
 		if (string.length() < 2) {
